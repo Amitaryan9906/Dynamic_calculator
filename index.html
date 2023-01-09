@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai Calculator</title>
+<style>
+#mainDiv{
+    height: 500px;
+    width: 350px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: rgba(100, 124, 255, 0.2) 0px 7px 29px 0px;
+
+}
+#display{
+    
+    height: 80px;
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 256, 0.2) 3px 1px 2px 2px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    font-weight:bold;
+
+}
+#container{
+    display:grid;
+    grid-template-columns: repeat(4 , 1fr);
+    grid-template-rows: repeat(4 , 80px);
+    margin:30px auto;
+    gap:20px;
+  
+}
+#container>div{
+    
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:white;
+    font-size:30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#container>div:nth-child(13){
+    background-color:red;
+    color:white;
+}
+#container>div:nth-child(4){
+    background-color:black;
+    color:white;
+}
+#container>div:nth-child(8){
+    background-color:black;
+    color:white;
+}
+#container>div:nth-child(12){
+    background-color:black;
+    color:white;
+}
+#container>div:nth-child(16){
+    background-color:black;
+    color:white;
+}
+#container>div:nth-child(15){
+    background-color:black;
+    color:white;
+}
+</style>
+
+</head>
+<body>
+    <div id="mainDiv">
+        <div id="display"></div>
+        <div id="container">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>*</div>
+            <div>C</div>
+            <div>0</div>
+            <div>=</div>
+            <div>/</div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let keys= document.querySelectorAll("#container>div");
+    let bag="";
+
+
+    keys.forEach(function (ele){
+        ele.addEventListener("click",myCal);
+    });
+   function myCal(event){
+    let tNum=event.target.innerText;
+    
+    if(tNum=="C"){
+        document.getElementById("display").innerText ="";
+        bag="";
+    }
+    else if(tNum=="="){
+        let ans=eval(bag);
+        document.getElementById("display").innerText =ans;
+    }
+    else{
+        bag+=tNum;
+        document.getElementById("display").innerText=bag
+    }
+   }
+   
+</script>
